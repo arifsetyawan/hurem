@@ -13,15 +13,15 @@ import {
     NotFoundException,
     ParseIntPipe, UseGuards, UseInterceptors, ClassSerializerInterceptor, Logger,
 } from '@nestjs/common';
-import {TasksService} from './tasks.service';
-import {CreateTaskDto} from './dto/create-task.dto';
-import {GetTasksFilterDto} from './dto/get-tasks-filter.dto';
-import {TaskStatusValidationPipe} from './pipes/task-status-validation.pipe';
-import {Task} from './tasks.entity';
-import {TaskStatus} from './task-status.enum';
-import {AuthGuard} from '@nestjs/passport';
-import {User} from '../auth/user.entity';
-import {GetUser} from '../auth/get-user.decorator';
+import { TasksService } from './tasks.service';
+import { CreateTaskDto } from './dto/create-task.dto';
+import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
+import { TaskStatusValidationPipe } from './pipes/task-status-validation.pipe';
+import { Task } from './tasks.entity';
+import { TaskStatus } from './task-status.enum';
+import { AuthGuard } from '@nestjs/passport';
+import { User } from '../users/user.entity';
+import { GetUser } from '../users/user.decorator';
 
 @Controller('tasks')
 @UseGuards(AuthGuard())
@@ -34,7 +34,7 @@ export class TasksController {
         @Query(ValidationPipe) filterDto: GetTasksFilterDto,
         @GetUser() user: User,
     ): Promise<Task[]> {
-        this.logger.verbose(`User ${user.username} Retreiving all task. ${JSON.stringify(filterDto)}`)
+        this.logger.verbose(`User ${user.username} Retreiving all task. ${JSON.stringify(filterDto)}`);
         return this.tasksServices.getTasks(filterDto, user);
     }
 

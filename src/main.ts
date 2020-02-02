@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import {LogLevel} from 'ts-loader/dist/logger';
 import { Logger } from '@nestjs/common';
 import * as config from 'config';
 

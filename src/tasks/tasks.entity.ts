@@ -1,7 +1,7 @@
-import {BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne} from 'typeorm';
-import {TaskStatus} from './task-status.enum';
-import {User} from '../auth/user.entity';
-import {Exclude} from 'class-transformer';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { TaskStatus } from './task-status.enum';
+import { User } from '../users/user.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Task extends BaseEntity {
